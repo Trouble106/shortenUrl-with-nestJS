@@ -6,6 +6,7 @@ import { Connection } from 'typeorm';
 
 @Module({
   imports: [databaseInfo],
+  controllers: [],
 })
 export class AppModule {
   constructor(private connection: Connection) {}

@@ -1,6 +1,9 @@
 import { TypeOrmModule } from '@nestjs/typeorm';
 import * as dotenv from 'dotenv';
-import { User } from '../entity/users/User.entity';
+// import { User } from '../entity/users/User.entity';
+// import { Entity } from '../entity/index';
+import { User } from '../user/User.entity';
+import { Url } from '../url/Url.entity';
 
 dotenv.config();
 export const databaseInfo = TypeOrmModule.forRoot({
@@ -10,11 +13,10 @@ export const databaseInfo = TypeOrmModule.forRoot({
   username: process.env.DB_USER,
   password: process.env.DB_PASS,
   database: process.env.DB_NAME,
-  synchronize: true,
+  synchronize: false,
   logging: false,
-  entities: [User],
+  entities: [User, Url],
   migrations: ['migration/**/*.ts'],
-  subscribers: ['subscriber/**/*.ts'],
   cli: {
     entitiesDir: 'entity',
     migrationsDir: 'migration',
